@@ -1,0 +1,33 @@
+# fundamentos_estructura
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.util.Scanner;
+
+public class rectangulo 
+{
+    public static void main(String[] args) throws IOException 
+    {
+        BufferedWriter bw=new BufferedWriter(new OutputStreamWriter(System.out));
+        bw.write("suma de riemann " + suma_riemann(0,10,1) + "\n");
+        bw.flush();
+    }
+   public static double suma_riemann(int inicial_point,int final_point, int step)
+   {
+     double response=0.0,temp;
+     int x_i, x_i_1, y_i;
+     x_i_1=inicial_point;
+     x_i=step + x_i_1;
+     for(int i=x_i;i<=final_point;i += step)
+     {
+         y_i=(int) Math.pow(x_i, 2);
+         temp=(y_i)*(x_i- x_i_1);
+         response += temp;
+         
+        x_i_1=x_i;
+        x_i=step + x_i_1;
+     }
+     return response;
+   }
+    
+}
