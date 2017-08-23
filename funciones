@@ -1,0 +1,352 @@
+# fundamentos_estructura
+import static funciones.Funciones.serie_tailor_cos;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.PrintStream;
+import java.io.Writer;
+import java.text.DecimalFormat;
+
+public class Funciones {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) throws IOException {
+        // TODO code application logic here
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        DecimalFormat df = new DecimalFormat("#0.000");
+        bw.write("suma de riemann: "+ suma_riemann(0, 10, 1)+ "\n");
+        bw.flush();
+        int x;
+        int z;
+        int y;
+        int a;
+        int i;
+        int n;
+        int cosx;
+        int base;
+        int exponente;
+        x = Integer.parseInt(br.readLine());
+        while(x%2 == 0 ){
+            x = Integer.parseInt(br.readLine());
+            i = Integer.parseInt(br.readLine());
+            
+            bw.write("la serie del coseno es: "+ serie_tailor_cos(i, x) + "\n");
+            
+        }
+        bw.flush();
+        while(x%2 == 1){
+            
+            x = Integer.parseInt(br.readLine());
+            i = Integer.parseInt(br.readLine());
+            bw.write("la serie del seno es: "+ serie_tailor_seno(i, x));
+        }
+        bw.flush();
+        while(x != 0){
+            bw.write("el seno de" + x + "es" + df.format(seno(x)) + "\n");
+        }
+        bw.flush();
+        
+        do
+        {
+            x = Integer.parseInt(br.readLine());
+            y = Integer.parseInt(br.readLine());
+            bw.write("el cuadrado de los numeros" + x +"y" + y + "es" + cuadrados(x, y) + "\n");
+            
+        }
+        while(x != 0);
+        bw.flush();
+        
+        do{
+            x = Integer.parseInt(br.readLine());
+            y = Integer.parseInt(br.readLine());
+            z = Integer.parseInt(br.readLine());
+            bw.write("el resultado de la funcion cuadratica es "+ cuadratica(x, y, z)+ "\n");
+        }
+        while(x != 0);
+        bw.flush();
+        
+        do{
+            a = Integer.parseInt(br.readLine());
+            bw.write("la sucession de fibonacci es "+ fibonacci(a)+ "\n");
+        }
+        while(x > 1);
+        bw.flush();
+        
+        do{
+            x = Integer.parseInt(br.readLine());
+            bw.write("el factorial del numero es "+ factorial(x)+ "\n");
+        }
+        while(x > 0);
+        bw.flush();
+        
+        do{
+            base = Integer.parseInt(br.readLine());
+            exponente = Integer.parseInt(br.readLine());
+            bw.write("la potencia del numero "+ base +"con potencia "+ exponente + "es"+ potencia(base, exponente)+ "\n");
+        }
+        while(base > 1);
+        bw.flush();
+    }
+    public static int option() throws IOException
+    {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+      bw.write("seleccione alguna de las siguiente opciones: \n1.suma\n2.resta\n3.multiplicacion" 
+              +  "\n4.division\n5.residuos\n6.factorial\n7.exponente\n8.seno\n9.coseno\n10.integral" 
+              +"\n11.salir " );  
+      bw.flush();
+      int option=Integer.parseInt(br.readLine());
+      return option;
+    }
+    public static int[]getparameters( int option) throws IOException
+    {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+      int []parameters=null;
+        switch(option)
+        {
+            case 1://suma
+            {
+                parameters=new int[2];
+                bw.write("acontinuacionse va a realizar una suma\n");
+                bw.write("ingrese el primer numero:\n");
+                parameters[0]=Integer.parseInt(br.readLine());
+                bw.write("ingrese el segundo numero:\n");
+                parameters[1]=Integer.parseInt(br.readLine());                
+            }
+             break;
+             case 2://resta
+            {
+                 parameters=new int[2];
+             bw.write("acontinuacionse va a realizar una resta\n");
+                bw.write("ingrese el primer numero:\n");
+                parameters[0]=Integer.parseInt(br.readLine());
+                bw.write("ingrese el segundo  numero:\n");
+                parameters[1]=Integer.parseInt(br.readLine());    
+            }
+             break;
+             case 3://multiplicacion
+            {
+                 parameters=new int[2];
+                bw.write("acontinuacionse va a realizar una multiplicacion\n");
+               bw.write("ingrese el primer numero:\n");
+                parameters[0]=Integer.parseInt(br.readLine());
+                bw.write("ingrese el segundo  numero:\n");
+                parameters[1]=Integer.parseInt(br.readLine());    
+            }
+             break;
+             case 4://division
+            {
+                 parameters=new int[2];
+            bw.write("acontinuacionse va a realizar una divicion\n");
+                bw.write("ingrese el primer numero:\n");
+                parameters[0]=Integer.parseInt(br.readLine());
+               bw.write("ingrese el segundo  numero:\n");
+                parameters[1]=Integer.parseInt(br.readLine());       
+            }
+             break;
+             case 5://residuo
+            {
+                 parameters=new int[2];
+              bw.write("acontinuacionse va a realizar un residuo\n");
+                bw.write("ingrese el primer numero:\n");
+                parameters[0]=Integer.parseInt(br.readLine());
+                bw.write("ingrese el segundo  numero:\n");
+                parameters[1]=Integer.parseInt(br.readLine());      
+            }
+             break;
+             case 6://factorial
+            { 
+                 parameters=new int[2];
+               bw.write("acontinuacionse va a realizar un factorisl\n");
+                bw.write("ingrese  numero:\n");
+                parameters[0]=Integer.parseInt(br.readLine());
+                   
+            }
+             break;
+             case 7://exponencial
+            {
+                 parameters=new int[2];
+              bw.write("acontinuacionse va a realizar un exponencial\n");
+                bw.write("ingrese de la base\n");
+                parameters[0]=Integer.parseInt(br.readLine());
+                bw.write("ingrese el valor del exponente:\n");
+                parameters[1]=Integer.parseInt(br.readLine());     
+            }
+             break;
+             case 8://seno
+            {
+              parameters=new int[2];
+               bw.write("acontinuacionse va a realizar la funcion seno\n");
+                bw.write("ingrese  numero:\n");
+                parameters[0]=Integer.parseInt(br.readLine());  
+            }
+             break;
+             case 9://coseno
+            {
+                parameters=new int[2];
+                bw.write("acontinuacion se va a realizar  la funcion coseno\n");
+               bw.write("ingrese  numero:\n");
+                parameters[0]=Integer.parseInt(br.readLine());
+            }
+             break;
+             case 10://integral
+            {
+                parameters=new int[2];
+                bw.write("acontinuacionse va a realizar un integral de x\n");
+               bw.write("ingrese  numero:\n");
+                parameters[0]=Integer.parseInt(br.readLine());
+            }
+             break;
+             default://salir 
+             {
+                 System.exit(0);
+             }
+             
+        }
+        
+        return parameters;
+    }
+    public static void operation( int option, int [] parameters)
+    {
+        switch(option)
+        {
+            case 1://suma
+            {
+               
+            }
+             break;
+             case 2://division
+            {
+               double result=division(parameters[0],parameters[1]);
+               if(result==Double.NaN)
+               {
+                   //mensaje error
+               }
+               else
+               {
+                 //mostrar resultado  
+               }
+            }
+             break;
+
+    }
+    /**
+     * Este metodo nos permote calcular el seno de un angulo
+     * @param x
+     * @return 
+     */
+    
+    public static double seno(int x)
+    {
+        return Math.sin((x* Math.PI)/ 180);
+    }
+    /**
+     * Este metodo nos permite calcular el cuadrado de un numero mas el cuadrado de otro
+     * @param x
+     * @param y
+     * @return 
+     */
+    public static int cuadrados(int x, int y)
+    {
+        return (int)(Math.pow(x, 2)+ Math.pow(y, 2));
+    }
+    
+    public static int cuadratica(int x, int y, int z)
+    {
+     return(int)((4*(int)Math.pow(x, 2))+(2 * y) + ( 2 * z));   
+    }
+    
+    public static int fibonacci(int a)
+    {
+        if(a == 0){
+            return 0;
+        }
+        else if(a == 1){
+            return 1;
+        }
+        else if(a > 1){
+            return fibonacci(a-1) + fibonacci(a-2);
+        }
+        return 0;
+    }
+    
+    public static int factorial(int x){
+        
+        if(x == 0){
+            return 1;
+        }
+        else if(x>0){
+            return (int)(x * factorial(x-1));
+        }
+        return 0;
+    }
+    public static double suma_riemann(int initial_point, int final_point, int step){
+        int i;
+        double response = 0.0;
+        double temp;
+        int x_i, x_i_1, y_i;
+        
+        x_i_1 = initial_point;
+        x_i = step + x_i_1;
+        
+        for( i = x_i; i <= final_point; i+= step){
+            
+            y_i = (x_i * x_i);
+            temp = (y_i) * (x_i - x_i_1);
+            response += temp;
+            
+            x_i_1 = x_i;
+            x_i = step + x_i_1;
+        }
+        return response;
+        
+    }
+    public static double serie_tailor_seno(int i, int x){
+        
+        double senx = 0.0; 
+        
+            
+        for(i = 0; i < 10; i+= i++){
+            senx += (int) (Math.pow(-1, i)* Math.pow(x, (2*i)+1))/ factorial((2*i)+1);
+        }
+            
+        
+        return senx;
+    }
+    public static double serie_tailor_cos(int i, int x){
+        double cosx = 0.0;
+        
+            
+        for(i = 0; i < 10; i+= i++){
+            cosx += (Math.pow(-1, i)* Math.pow(x, (2*i)))/ factorial((2*i));
+        }
+        
+        return cosx;
+    }
+    public static int potencia(int exponente, int base){
+        if(exponente == 0){
+            return 1;
+        }
+        else if(exponente == 1){
+            return base;
+            
+        }
+        else if(exponente > 1){
+            return (int) (base * Math.pow(base, exponente-1)); 
+        }
+        else if(exponente < 0){
+            return (int) (1/(Math.pow(base * -1, exponente)));
+        }
+        return 0;
+    }
+
+    private static double division(int parameter, int parameter0) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+}
