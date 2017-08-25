@@ -212,30 +212,153 @@ public class Funciones {
         
         return parameters;
     }
-    public static void operation( int option, int [] parameters)
+    public static void operation( int option, int [] parameters) throws IOException
     {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+      
+    
         switch(option)
         {
             case 1://suma
             {
-               
+              int result=suma(parameters[0],parameters[1]); 
+              if(result==Double.NaN)
+               {
+                  bw.write("error de la suma");
+               }
+               else
+               {
+                 bw.write("resultado de la suma = " + result);
+               }
             }
              break;
-             case 2://division
+             case 2://resta
+            {
+              int result=resta(parameters[0],parameters[1]); 
+              if(result==Double.NaN)
+               {
+                  bw.write("error de la resta");
+               }
+               else
+               {
+                 bw.write("resultado de resta = " + result);
+               }
+            }
+            case 3://multiplicacion
+            {
+              int result=multiplicacion(parameters[0],parameters[1]); 
+              if(result==Double.NaN)
+               {
+                  bw.write("error de la multiplicacion");
+               }
+               else
+               {
+                 bw.write("resultado de la multiplicacion = " + result);
+               }
+            }
+             case 4://division
             {
                double result=division(parameters[0],parameters[1]);
                if(result==Double.NaN)
                {
-                   //mensaje error
+                  bw.write("error de la division ");
                }
                else
                {
-                 //mostrar resultado  
+                 bw.write("resultado de divicion = "+ result);
                }
             }
              break;
+             case 5://residuo
+            {
+              int result=residuo(parameters[0],parameters[1]); 
+              if(result==Double.NaN)
+               {
+                  bw.write("error de la suma");
+               }
+               else
+               {
+                 bw.write("resultado de la suma = " + result);
+               }
+            }
+            case 6://factorial
+            { 
+              int result=factorial(parameters[0]); 
+              if(result==Double.NaN)
+               {
+                  bw.write("error del factorial");
+               }
+               else
+               {
+                 bw.write("resultado del factorial = " + result);
+               }
+                   
+            }
+             break;
+             case 7://exponencial
+            { 
+              int result=exponencial(parameters[0],parameters[1]); 
+              if(result==Double.NaN)
+               {
+                  bw.write("error del exponencial");
+               }
+               else
+               {
+                 bw.write("resultado del exponencial= " + result);
+               }
+                   
+            }
+             break;
+             case 8://seno
+            { 
+              double result=seno(parameters[0]); 
+              if(result==Double.NaN)
+               {
+                  bw.write("error del seno");
+               }
+               else
+               {
+                 bw.write("resultado del seno = " + result);
+               }
+                   
+            }
+            break;
+            case 9://coseno
+            { 
+              double result=coseno(parameters[0]); 
+              if(result==Double.NaN)
+               {
+                  bw.write("error del coseno");
+               }
+               else
+               {
+                 bw.write("resultado del coseno = " + result);
+               }
+                   
+            }
+            break;
+            case 10://integral
+            { 
+              double result=integral(parameters[0]); 
+              if(result==Double.NaN)
+               {
+                  bw.write("error del integral");
+               }
+               else
+               {
+                 bw.write("resultado del integral= " + result);
+               }
+                   
+            }
+            break;
+            default://salir 
+             {
+                 System.exit(0);
+             }
 
     }
+   }
     /**
      * Este metodo nos permote calcular el seno de un angulo
      * @param x
@@ -349,4 +472,36 @@ public class Funciones {
     private static double division(int parameter, int parameter0) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    private static int suma(int parameter, int parameter0) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    private static int resta(int parameter, int parameter0) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    private static int multiplicacion(int parameter, int parameter0) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    private static int residuo(int parameter, int parameter0) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    private static int exponencial(int parameter, int parameter2) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    private static double coseno(int parameter) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    private static double integral(int parameter) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
+
+
+        
+      
