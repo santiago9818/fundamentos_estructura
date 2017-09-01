@@ -1,5 +1,6 @@
 # fundamentos_estructura
 
+import static calculadora.Calculadora.operation;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -241,7 +242,7 @@ public class Calculadora {
     {
          BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-        operation oper=new operation();
+        Operation oper=new Operation();
     
         switch(option)
         {
@@ -297,7 +298,7 @@ public class Calculadora {
              break;
               case 7://exponencial
             {
-               int result =oper.exponencial(parameters[0],parameters[1]);
+               int result =oper.potencia(parameters[0],parameters[1]);
                bw.write("el resultado del exponente es "  + result + "\n");
                bw.flush();
             }
