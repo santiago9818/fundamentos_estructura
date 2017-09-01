@@ -1,8 +1,7 @@
 # fundamentos_estructura
-
-public class operation 
+public class Operation 
 {
-    public operation(){}
+    public Operation(){}
   
 public int suma(int number1,int number2)
 {
@@ -32,7 +31,7 @@ public double  division(int number1,int number2)
    return Double.NaN;   //no hya numero 
   }
 }
-public int modulo(int number1,int number2)
+public int residuo(int number1,int number2)
 {
     return number1 % number2;
 }
@@ -106,13 +105,16 @@ public int factorial(int x)
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    int exponencial(int parameter, int parameter0) {
+    int potencias(int parameter, int parameter0) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    int residuo(int parameter, int parameter0) {
+    int residuos(int parameter, int parameter0) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 
    }
+
+
+
