@@ -1,6 +1,5 @@
 # fundamentos_estructura
-
-import static calculadora.Calculadora.operation;
+import static calculadora1.Calculadora1.operation;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -10,7 +9,7 @@ import java.io.PrintStream;
 import java.io.Writer;
 import java.text.DecimalFormat;
 
-public class Calculadora {
+public class Calculadora1 {
    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
    
@@ -284,7 +283,7 @@ public class Calculadora {
              break;
               case 5://residuo
             {
-               int result =oper.residuo(parameters[0],parameters[1]);
+               int result =oper.modulo(parameters[0],parameters[1]);
                bw.write("el resultado del residuo es "  + result + "\n");
                bw.flush();
             }
@@ -312,14 +311,14 @@ public class Calculadora {
              break;
               case 9://coseno
             {
-               int result =oper.coseno(parameters[0]);
+               int result =(int) oper.coseno(parameters[0]);
                bw.write("el resultado del coseno "  + result + "\n");
                bw.flush();
             }
              break;
               case 10://integral
             {
-               int result =integral(parameters[0]);
+               int result =oper.integral(parameters[0]);
                bw.write("el resultado de la integral  "  + result + "\n");
                bw.flush();
             }
@@ -443,7 +442,7 @@ public class Calculadora {
         }
         return 0;
     }
-
+    
     private static double division(int parameter, int parameter0) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
@@ -476,4 +475,7 @@ public class Calculadora {
     private static int coseno(int parameter) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
 }
+
+
