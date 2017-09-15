@@ -100,42 +100,49 @@ public static int factorial(int x){
     {
         return Math.sin((x* Math.PI)/ 180);
     }
- public static double coseno(int x)
+ public double coseno (double y) 
     {
-        return Math.cos((x* Math.PI)/ 180);
+        return Math.cos(y);     
     }
-public int integral(int inicio,int fin,int paso)
-{
-    int acum=0;
-    for (int i=inicio;i<fin;i +=paso)
+public double integral (double inicio, double fin, double paso)
     {
-        acum +=(paso*potencia(i,2));
-        
+        double acumuladora = 0; 
+        for (double i = inicio; i< fin; i+=paso)
+        {
+            acumuladora +=(paso * potencia((int) i, 2)); 
+        }
+        return acumuladora; 
     }
-    return acum;
-}
- 
-    
+ public double [] ecucuadratica (double a, double b, double c)
+    {  
+        double []resultado = new double [2];
+        double numero = ((b*b))-(4*(a*c)); //potencia y multiplicación de la fórmula
+        if (numero>=0 || a>0)
+        {
+            resultado [0]= ((-b) + Math.sqrt(numero))/(2*a); 
+            resultado [1] = ((-b) - Math.sqrt(numero))/(2*a);     
+        }
+        else {
+            System.out.println("no hay ....");
+        }
+          
+        return resultado;         
+    }
+   public double metodoPi (double numTer)
+    {
+        double sumaPi = 0, termino; 
+        int denominador = 1, contador = 0, signo = 1; 
+        while (contador < numTer){
+            if (denominador % 2 !=0){
+                termino = (double) 4 / denominador * signo; 
+                sumaPi = sumaPi + termino; 
+                signo = signo * -1; 
+                contador++;
+            }
+            denominador++;     
+        }
+        return sumaPi; 
+    } 
 
+}
   
-
-   
-    
-
-    private static int residuo(int parameter, int parameter0) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    private static int exponencial(int parameter, int parameter0) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    static int integral(int parameter) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    
-
- 
-
-}
