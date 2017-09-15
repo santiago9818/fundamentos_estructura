@@ -107,7 +107,7 @@ public class Calculadora1 {
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
       bw.write("seleccione alguna de las siguiente opciones: \n1.suma\n2.resta\n3.multiplicacion" 
               +  "\n4.division\n5.residuos\n6.factorial\n7.exponente\n8.seno\n9.coseno\n10.integral" 
-              +"\n11.salir\n " );  
+              +"\n11.Ecuacion cuadratica" + "\n12.Metodo PI" + "\n13.salir\n" );  
       bw.flush();
       int option=Integer.parseInt(br.readLine());
       return option;
@@ -228,6 +228,30 @@ public class Calculadora1 {
                 parameters[0]=Integer.parseInt(br.readLine());
             }
              break;
+              case 11: //cuadratica 
+            {
+                parameters = new int [3]; //Número de parametros 
+                bw.write("\nA continuación se va a realizar la función cuadrática\n");
+                bw.write("Ingrese el primer número: ");
+                bw.flush();
+                parameters [0] = Integer.parseInt(br.readLine()); 
+                bw.write("\n Ingrese el segundo número:");
+                bw.flush();
+                parameters [1] = Integer.parseInt(br.readLine()); 
+                bw.write("\n Ingrese el tercer número:");
+                bw.flush();
+                parameters [2] = Integer.parseInt(br.readLine()); 
+            }
+            break; 
+            case 12://Pi
+            {
+                parameters=new int[1];
+                bw.write("acontinuacion se va a realizar  la funcion PI\n");
+               bw.write("ingrese  numero:\n");
+                bw.flush();
+                parameters[0]=Integer.parseInt(br.readLine());
+            }
+             break;
              default://salir 
              {
                  System.exit(0);
@@ -309,26 +333,37 @@ public class Calculadora1 {
                bw.flush();
             }
              break;
-              case 9://coseno
+          case 9://Coseno
             {
-               int result =(int) oper.coseno(parameters[0]);
-               bw.write("el resultado del coseno "  + result + "\n");
-               bw.flush();
+                double result = oper.coseno(parameters[0]); 
+                bw.write("\n El resultado del coseno es " + result + "\n"); 
+                bw.flush(); 
+            }
+            break;
+             case 10: //Integral  
+            {
+                double result = oper.integral(parameters[0], parameters [1], parameters [2]); 
+                bw.write("El resultado de la integral es: "+result + "\n" ); 
+                bw.flush(); 
             }
              break;
-              case 10://integral
+             case 11: //Cuadratica 
             {
-               int result =oper.integral(parameters[0]);
-               bw.write("el resultado de la integral  "  + result + "\n");
-               bw.flush();
+                double [] resultado= oper.ecucuadratica(parameters[0], parameters [1], parameters [2]); 
+                bw.write("el resultado de x1 es:" + resultado [0]+ "el resultado de x2 es:" +resultado [1]); 
+                bw.flush(); 
             }
-             break;
+            break; 
+            case 12: //metodo PI
+            {
+                double resultado= oper.metodoPi(parameters[0]); 
+                bw.write("el resultado de PI " + resultado + "\n"); 
+                bw.flush(); 
+            }
+            break; 
              
                default://salir 
-             {
-                 System.exit(0);
-             }
-             
+            
              
 
      }
@@ -442,40 +477,6 @@ public class Calculadora1 {
         }
         return 0;
     }
-    
-    private static double division(int parameter, int parameter0) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    private static int suma(int parameter, int parameter0) {
-        
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    private static int multiplicacion(int parameter, int parameter0) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    private static int resta(int parameter, int parameter0) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    private static int residuo(int parameter, int parameter0) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    private static int exponencial(int parameter, int parameter0) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    private static int integral(int parameter) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    private static int coseno(int parameter) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+   
 
 }
-
-
