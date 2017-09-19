@@ -29,7 +29,7 @@ public class Calculadora1 {
         }
         while(option!=11);
         bw.write("suma de riemann: "+ suma_riemann(0, 10, 1)+ "\n");
-        bw.flush();
+    
         int x;
         int z;
         int y;
@@ -221,11 +221,17 @@ public class Calculadora1 {
              break;
              case 10://integral
             {
-                parameters=new int[1];
+                parameters=new int[3];
                 bw.write("acontinuacionse va a realizar un integral de x\n");
-               bw.write("ingrese  numero:\n");
+               bw.write("ingrese  inicio:\n");
                 bw.flush();
                 parameters[0]=Integer.parseInt(br.readLine());
+                bw.write("ingrese  fin:\n");
+                bw.flush();
+                parameters[1]=Integer.parseInt(br.readLine());
+                bw.write("ingrese  paso:\n");
+                bw.flush();
+                parameters[2]=Integer.parseInt(br.readLine());
             }
              break;
               case 11: //cuadratica 
@@ -480,3 +486,4 @@ public class Calculadora1 {
    
 
 }
+
