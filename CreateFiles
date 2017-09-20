@@ -7,23 +7,17 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Random;
 
-public class CreateFiles {
+public class CreateFiles 
+{
     public CreateFiles() throws IOException
     {
-        try
-      {
-       BufferedWriter bw = new BufferedWriter(new FileWriter("secuencias,umd "));
+        BufferedWriter bw = new BufferedWriter (new FileWriter("sequences.umd")); 
         
         for (int i = 0; i < 1000; i++)
         {
             bw.write (createExperimentalRead()); 
         }
         bw.flush();
-        }
-      catch(Exception e)
-      {
-       e.printStackTrace();   
-      }
             
     }
     public String createExperimentalRead()
@@ -53,7 +47,6 @@ public class CreateFiles {
                 case 3:{sequence += "T";}break; 
             }
         }
-        
         return sequence;  
     }
     
@@ -61,20 +54,15 @@ public class CreateFiles {
             BufferedReader br = new BufferedReader(new FileReader("sequences.umd"));
             int lines = 0, linesMotif = 0;
             String read = br.readLine();
-            try
-            { 
             while(read != null)
             {
-                if(read.split(",")[2].contains(motif)){
+                if(read.split(",")[2].contains(motif))
+                {
                     linesMotif +=1 ;
-                    
                 }
                 lines+=1;
                 read = br.readLine();
-                
             }
-            }
-      catch(Exception ex){}
             return linesMotif;
         }
     
@@ -84,4 +72,3 @@ public class CreateFiles {
         System.out.println(cf.numberReads("CTTA"));
     }
 }
-
