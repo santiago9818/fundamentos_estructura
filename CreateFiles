@@ -1,0 +1,87 @@
+# fundamentos_estructura
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Random;
+
+public class CreateFiles {
+    public CreateFiles() throws IOException
+    {
+        try
+      {
+       BufferedWriter bw = new BufferedWriter(new FileWriter("secuencias,umd "));
+        
+        for (int i = 0; i < 1000; i++)
+        {
+            bw.write (createExperimentalRead()); 
+        }
+        bw.flush();
+        }
+      catch(Exception e)
+      {
+       e.printStackTrace();   
+      }
+            
+    }
+    public String createExperimentalRead()
+    {
+        String read = ""; 
+        Random rd = new Random(); 
+        int number1 = Math.abs(rd.nextInt());
+        int length = 5 + rd.nextInt(26); 
+        
+        read = number1 + "," + (number1 + length) + "," + createsequences(length)+"\n"; 
+        return read; 
+    }
+    
+    
+    public String createsequences(int length)
+    {
+        String sequence = ""; 
+        Random rd = new Random (); //Nos permite hacer aleatorios no solamente con decimales, sino tambien con enteros.
+        
+        for (int i = 0; i < length; i++)
+        {
+            switch(rd.nextInt(4))
+            {
+                case 0:{sequence += "A";}break;
+                case 1:{sequence += "C";}break; 
+                case 2:{sequence += "G";}break; 
+                case 3:{sequence += "T";}break; 
+            }
+        }
+        
+        return sequence;  
+    }
+    
+    public int numberReads(String motif) throws FileNotFoundException, IOException{
+            BufferedReader br = new BufferedReader(new FileReader("sequences.umd"));
+            int lines = 0, linesMotif = 0;
+            String read = br.readLine();
+            try
+            { 
+            while(read != null)
+            {
+                if(read.split(",")[2].contains(motif)){
+                    linesMotif +=1 ;
+                    
+                }
+                lines+=1;
+                read = br.readLine();
+                
+            }
+            }
+      catch(Exception ex){}
+            return linesMotif;
+        }
+    
+    public static void main (String args []) throws IOException
+    {
+        CreateFiles cf = new CreateFiles ();
+        System.out.println(cf.numberReads("CTTA"));
+    }
+}
+
