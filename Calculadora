@@ -9,7 +9,8 @@ import java.io.PrintStream;
 import java.io.Writer;
 import java.text.DecimalFormat;
 
-public class Calculadora1 {
+public class Calculadora1 
+{
    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
    
