@@ -1,18 +1,18 @@
 # fundamentos_estructura
-import static calculadora1.Calculadora1.factorial;
+import static calculadora1.Calculadora1.factorial; // importar los elementos del paquete
 
-public class Operation
+public class Operation // clase
 {
-    public Operation(){}
-public int suma(int number1,int number2)
+    public Operation(){} // parametros
+public int suma(int number1,int number2) // suma
 {
     return number1 + number2;
 }
-public int resta(int number1,int number2)
+public int resta(int number1,int number2) // resta
 {
     return number1 - number2;
 }
-public int multiplicacion(int number1,int number2)
+public int multiplicacion(int number1,int number2) // multiplicacion
 { 
     int result=0;
     for(int i=0;i<number2;i++)
@@ -21,7 +21,7 @@ public int multiplicacion(int number1,int number2)
     }
     return result;
 }
-public double  division(int number1,int number2)
+public double  division(int number1,int number2) // division
 {
   if(number2!=0)
   {
@@ -32,11 +32,11 @@ public double  division(int number1,int number2)
    return Double.NaN;   //no hya numero 
   }
 }
-public int modulo(int number1,int number2)
+public int modulo(int number1,int number2) // modulo
 {
     return number1 % number2;
 }
-public int potencia(int base,int exponente)
+public int potencia(int base,int exponente) // potencia
 {
     if(exponente==1)
     {
@@ -61,7 +61,7 @@ public int potencia(int base,int exponente)
         }
     }
 }
-public static int factorial(int x){
+public static int factorial(int x){ // factorial
         
         if(x == 0){
             return 1;
@@ -71,7 +71,7 @@ public static int factorial(int x){
         }
         return 0;
     }
- public double[]ecuacion_cuadratica(int a,int b,int c)
+ public double[]ecuacion_cuadratica(int a,int b,int c) // cuadratica
  { 
      double[]roots=new double [2];
      int temp_term1,temp_term2;
@@ -96,15 +96,15 @@ public static int factorial(int x){
      }
    
  }
- public static double seno(int x)
+ public static double seno(int x) // seno
     {
         return Math.sin((x* Math.PI)/ 180);
     }
- public double coseno (double y) 
+ public double coseno (double y) coseno
     {
         return Math.cos(y);     
     }
-public double integral (double inicio, double fin, double paso)
+public double integral (double inicio, double fin, double paso) // integral
     {
         double acumuladora = 0; 
         for (double i = inicio; i< fin; i+=paso)
@@ -113,7 +113,7 @@ public double integral (double inicio, double fin, double paso)
         }
         return acumuladora; 
     }
- public double [] ecucuadratica (double a, double b, double c)
+ public double [] ecucuadratica (double a, double b, double c) // cuadratica
     {  
         double []resultado = new double [2];
         double numero = ((b*b))-(4*(a*c)); //potencia y multiplicación de la fórmula
@@ -128,7 +128,7 @@ public double integral (double inicio, double fin, double paso)
           
         return resultado;         
     }
-   public double metodoPi (double numTer)
+   public double metodoPi (double numTer) //PI
     {
         double sumaPi = 0, termino; 
         int denominador = 1, contador = 0, signo = 1; 
