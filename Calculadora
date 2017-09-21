@@ -9,28 +9,29 @@ import java.io.PrintStream;
 import java.io.Writer;
 import java.text.DecimalFormat;
 
-public class Calculadora1 
+public class Calculadora1 // nombre de la clase 
 {
-   BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+   BufferedReader br = new BufferedReader(new InputStreamReader(System.in)); // creacion de objeto de la clase Buffer para que lea
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out)); // creacion de objeto de la clase Buffer para escribir
    
-    public static void main(String[] args) throws IOException 
+    public static void main(String[] args) throws IOException //creacion de la clase principal
     {
     
        
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-        DecimalFormat df = new DecimalFormat("#0.000");
-        int option;
-        do
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));// creacion de objeto de la clase Buffer para que lea
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));// creacion de objeto de la clase Buffer para escribir
+        DecimalFormat df = new DecimalFormat("#0.000");// creacion de objeto para decimales 
+        int option;// declaacion de variable entera
+        do// ciclo do while
         {
-         option=option();
-        int[]parameters=getparameters(option);
-         operation(option,parameters);
+         option=option(); // creacion de eleccion de opciones
+        int[]parameters=getparameters(option);// creacion de vector
+         operation(option,parameters);//inclusion de parametros en opciones
         }
-        while(option!=11);
-        bw.write("suma de riemann: "+ suma_riemann(0, 10, 1)+ "\n");
+        while(option!=11);//continuacion del ciclo do while
+        bw.write("suma de riemann: "+ suma_riemann(0, 10, 1)+ "\n");// visualizacion de la operacion
     
+    // declaracion de variables enteras
         int x;
         int z;
         int y;
@@ -40,91 +41,99 @@ public class Calculadora1
         int cosx;
         int base;
         int exponente;
-        x = Integer.parseInt(br.readLine());
-        while(x%2 == 0 ){
-            x = Integer.parseInt(br.readLine());
-            i = Integer.parseInt(br.readLine());
-            
-            bw.write("la serie del coseno es: "+ serie_tailor_cos(i, x) + "\n");
-            
-        }
-        bw.flush();
-        while(x%2 == 1){
-            
-            x = Integer.parseInt(br.readLine());
-            i = Integer.parseInt(br.readLine());
-            bw.write("la serie del seno es: "+ serie_tailor_seno(i, x));
-        }
-        bw.flush();
-        while(x != 0){
-            bw.write("el seno de" + x + "es" + df.format(seno(x)) + "\n");
-        }
-        bw.flush();
-        
-        do
+        x = Integer.parseInt(br.readLine()); // instanciamiento de variable x
+        while(x%2 == 0 ) // ciclo while
         {
+            // parametros de variables
+            x = Integer.parseInt(br.readLine());
+            i = Integer.parseInt(br.readLine());
+            
+            bw.write("la serie del coseno es: "+ serie_tailor_cos(i, x) + "\n"); // visualizacion del parametro
+            
+        }
+        bw.flush();// visualizacion de la operacion
+        while(x%2 == 1)// ciclo while
+        {
+            //parametros de variables
+            x = Integer.parseInt(br.readLine());
+            i = Integer.parseInt(br.readLine());
+            bw.write("la serie del seno es: "+ serie_tailor_seno(i, x)); // visualizacion del parametro
+        }
+        bw.flush(); // visualizacion de la operacion
+        while(x != 0) // ciclo while
+        {
+            bw.write("el seno de" + x + "es" + df.format(seno(x)) + "\n"); // visualizacion del parametro
+        }
+        bw.flush(); // visualizacion de la operacion
+        
+        do // ciclo do while
+        {
+            // definicion de variables
             x = Integer.parseInt(br.readLine());
             y = Integer.parseInt(br.readLine());
-            bw.write("el cuadrado de los numeros" + x +"y" + y + "es" + cuadrados(x, y) + "\n");
+            bw.write("el cuadrado de los numeros" + x +"y" + y + "es" + cuadrados(x, y) + "\n"); // visualizacion de parametros
             
         }
-        while(x != 0);
-        bw.flush();
+        while(x != 0); // continuacion del ciclo do while
+        bw.flush(); // visualizacion de la operacion
         
-        do{
+        do{ // ciclo do
+            // definicion de variables
             x = Integer.parseInt(br.readLine());
             y = Integer.parseInt(br.readLine());
             z = Integer.parseInt(br.readLine());
-            bw.write("el resultado de la funcion cuadratica es "+ cuadratica(x, y, z)+ "\n");
+            bw.write("el resultado de la funcion cuadratica es "+ cuadratica(x, y, z)+ "\n");// visualizacion del parametro
         }
-        while(x != 0);
-        bw.flush();
+        while(x != 0);// ciclo while
+        bw.flush();// visualizacion de la operacion
         
         do{
-            a = Integer.parseInt(br.readLine());
-            bw.write("la sucession de fibonacci es "+ fibonacci(a)+ "\n");
+            a = Integer.parseInt(br.readLine());// definicion de entero
+            bw.write("la sucession de fibonacci es "+ fibonacci(a)+ "\n");// visualizacion del parametro
         }
-        while(x > 1);
-        bw.flush();
+        while(x > 1); // ciclo while
+        bw.flush();// visualizacion de la operacion
         
-        do{
-            x = Integer.parseInt(br.readLine());
-            bw.write("el factorial del numero es "+ factorial(x)+ "\n");
+        do{// ciclo do
+            // parametros
+            x = Integer.parseInt(br.readLine());// definicion de entero
+            bw.write("el factorial del numero es "+ factorial(x)+ "\n");// visualizacion del parametro
         }
-        while(x > 0);
-        bw.flush();
+        while(x > 0);// ciclo while
+        bw.flush();// visualizacion de la operacion
         
-        do{
-            base = Integer.parseInt(br.readLine());
-            exponente = Integer.parseInt(br.readLine());
-            bw.write("la potencia del numero "+ base +"con potencia "+ exponente + "es"+ potencia(base, exponente)+ "\n");
+        do{ // ciclo do
+            base = Integer.parseInt(br.readLine());// definicion de entero
+            exponente = Integer.parseInt(br.readLine());// definicion de entero
+            bw.write("la potencia del numero "+ base +"con potencia "+ exponente + "es"+ potencia(base, exponente)+ "\n");// visualizacion del parametro
         }
-        while(base > 1);
-        bw.flush();
+        while(base > 1); / ciclo while
+        bw.flush();// visualizacion de la operacion
     }
-    public static int option() throws IOException
+    public static int option() throws IOException // menu
     {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in)); // inclusion de datos
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out)); // visualizacion de lo anterior
       bw.write("seleccione alguna de las siguiente opciones: \n1.suma\n2.resta\n3.multiplicacion" 
               +  "\n4.division\n5.residuos\n6.factorial\n7.exponente\n8.seno\n9.coseno\n10.integral" 
-              +"\n11.Ecuacion cuadratica" + "\n12.Metodo PI" + "\n13.salir\n" );  
-      bw.flush();
-      int option=Integer.parseInt(br.readLine());
-      return option;
+              +"\n11.Ecuacion cuadratica" + "\n12.Metodo PI" + "\n13.salir\n" );  // visualizacion del parametro
+      bw.flush();// visualizacion de la operacion
+      int option=Integer.parseInt(br.readLine()); // definicion de entero
+      return option; // resultado de la operacion
     }
-    public static int[]getparameters( int option) throws IOException
+    public static int[]getparameters( int option) throws IOException // parametros
     {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-        int []parameters=null;
-        switch(option)
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in)); // inclusion de datos
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out)); // visualizacion de Datos
+        int []parameters=null; //parametro vacio
+        switch(option) // menu
         {
+        //parametros a recibir
             case 1://suma
             {
                 parameters=new int[2];
-                bw.write("acontinuacionse va a realizar una suma\n");
-                bw.write("ingrese el primer numero:\n");
+                bw.write("acontinuacionse va a realizar una suma\n");// visualizacion del parametro
+                bw.write("ingrese el primer numero:\n");// visualizacion del parametro
                 parameters[0]=Integer.parseInt(br.readLine());
                  bw.flush();
                 bw.write("ingrese el segundo numero:\n");
@@ -268,13 +277,14 @@ public class Calculadora1
         
         return parameters;
     }
-    public static void operation( int option, int [] parameters) throws IOException
+    public static void operation( int option, int [] parameters) throws IOException // operaciones
     {
-         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-        Operation oper=new Operation();
+         BufferedReader br = new BufferedReader(new InputStreamReader(System.in)); // entrada de datos
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out)); // salida de datos
+        Operation oper=new Operation(); //objeto operacion
     
-        switch(option)
+        switch(option) // menu
+        //datos a operar
         {
             case 1://suma
             {
@@ -381,7 +391,7 @@ public class Calculadora1
      * @return 
      */
     
-    public static double seno(int x)
+    public static double seno(int x) // clase seno
     {
         return Math.sin((x* Math.PI)/ 180);
     }
@@ -391,17 +401,17 @@ public class Calculadora1
      * @param y
      * @return 
      */
-    public static int cuadrados(int x, int y)
+    public static int cuadrados(int x, int y) // caudratica
     {
         return (int)(Math.pow(x, 2)+ Math.pow(y, 2));
     }
     
-    public static int cuadratica(int x, int y, int z)
+    public static int cuadratica(int x, int y, int z) // cuadratica
     {
      return(int)((4*(int)Math.pow(x, 2))+(2 * y) + ( 2 * z));   
     }
     
-    public static int fibonacci(int a)
+    public static int fibonacci(int a) // fibonacci
     {
         if(a == 0){
             return 0;
@@ -415,7 +425,7 @@ public class Calculadora1
         return 0;
     }
     
-    public static int factorial(int x){
+    public static int factorial(int x){ // factorial
         
         if(x == 0){
             return 1;
@@ -425,7 +435,7 @@ public class Calculadora1
         }
         return 0;
     }
-    public static double suma_riemann(int initial_point, int final_point, int step){
+    public static double suma_riemann(int initial_point, int final_point, int step){ parametros y clase de suma de ryemann
         int i;
         double response = 0.0;
         double temp;
@@ -446,7 +456,7 @@ public class Calculadora1
         return response;
         
     }
-    public static double serie_tailor_seno(int i, int x){
+    public static double serie_tailor_seno(int i, int x){ // serie de taylor
         
         double senx = 0.0; 
         
@@ -468,7 +478,7 @@ public class Calculadora1
         
         return cosx;
     }
-    public static int potencia(int exponente, int base){
+    public static int potencia(int exponente, int base){ // potencia
         if(exponente == 0){
             return 1;
         }
