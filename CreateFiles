@@ -53,6 +53,66 @@ public class CreateFiles
     public int numberReads(String motif) throws FileNotFoundException, IOException{
             BufferedReader br = new BufferedReader(new FileReader("sequences.umd"));
             int lines = 0, linesMotif = 0;
+            String read = br.readLine();import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.Reader;
+import java.util.Random;
+
+
+
+public class CreateFiles 
+{
+    public CreateFiles() throws IOException
+    {
+        BufferedWriter bw = new BufferedWriter (new FileWriter("sequences.umd")); 
+        
+        for (int i = 0; i < 15; i++)
+        {
+            bw.write (createExperimentalRead()); 
+        }
+        bw.flush();
+            
+    }
+    public String createExperimentalRead()
+    {
+        String read = ""; 
+        Random rd = new Random(); 
+        int number1 = Math.abs(rd.nextInt());
+        int length = 5 + rd.nextInt(26); 
+        
+        read = number1 + "," + (number1 + length) + "," + createsequences(length)+"\n"; 
+        return read; 
+    }
+    
+    
+    public String createsequences(int length)
+    {
+        String sequence = ""; 
+        Random rd = new Random (); //Nos permite hacer aleatorios no solamente con decimales, sino tambien con enteros.
+        
+        for (int i = 0; i < length; i++)
+        {
+            switch(rd.nextInt(4))
+            {
+                case 0:{sequence += "A";}break;
+                case 1:{sequence += "C";}break; 
+                case 2:{sequence += "G";}break; 
+                case 3:{sequence += "T";}break; 
+            }
+        }
+        return sequence;  
+    }
+    
+    public int numberReads(String motif) throws FileNotFoundException, IOException{
+            BufferedReader br = new BufferedReader(new FileReader("sequences.umd"));
+            int lines = 0, linesMotif = 0;
             String read = br.readLine();
             while(read != null)
             {
@@ -65,10 +125,33 @@ public class CreateFiles
             }
             return linesMotif;
         }
-    
-    public static void main (String args []) throws IOException
+   public static void generateKmeans(int lenght,String motif) throws IOException
+   {
+     BufferedWriter bw= new BufferedWriter(new OutputStreamWriter(System.out)); 
+     if(lenght==1)
+     {
+       bw.write(motif + "A\n");
+       bw.write(motif + "C\n");
+       bw.write(motif + "G\n");
+       bw.write(motif + "T\n");
+       bw.flush();
+    }
+    else
+    {
+     generateKmeans(lenght -1,motif + "A"); 
+     generateKmeans(lenght -1,motif + "C");   
+     generateKmeans(lenght -1,motif + "G");   
+     generateKmeans(lenght -1,motif + "T");   
+    }
+  }
+   public static void main (String args []) throws IOException
     {
         CreateFiles cf = new CreateFiles ();
         System.out.println(cf.numberReads("CTTA"));
+        
     }
+
+   
+   
+    
 }
