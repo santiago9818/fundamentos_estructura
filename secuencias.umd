@@ -10,89 +10,130 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.Random;
 
-public class Secuenciasumd 
-{
-      Random aleatorio=new Random(System.nanoTime());
-    public Secuenciasumd()
+public class CreateFiles {
+    public CreateFiles() throws IOException
     {
-      int reads=1000;
-      try
+        try
       {
        BufferedWriter bw = new BufferedWriter(new FileWriter("secuencias,umd "));
-       for(int i=0;i<reads;i++)
-       {
-         bw.write(createRead());
-       }
-       bw.flush();
-      }
-      catch(Exception ex)
+        
+        for (int i = 0; i < 1000; i++)
+        {
+            bw.write (createExperimentalRead()); 
+        }
+        bw.flush();
+        }
+      catch(Exception e)
       {
        e.printStackTrace();   
       }
+            
     }
- 
-  public String createRead() throws IOException
-  {
-     int number,length;
-     number=Math.abs(aleatorio.nextInt());
-     length=5 + aleatorio.nextInt(26);
-     return (number + "," + (number+length) + "," + createSecuencia(length) + "\n");
+    public String createExperimentalRead()
+    {
+        String read = ""; 
+        Random rd = new Random(); 
+        int number1 = Math.abs(rd.nextInt());
+        int length = 5 + rd.nextInt(26); 
+        
+        read = number1 + "," + (number1 + length) + "," + createsequences(length)+"\n"; 
+        return read; 
+    }
+    
+    
+    public String createsequences(int length)
+    {
+        String sequence = ""; 
+        Random rd = new Random (); //Nos permite hacer aleatorios no solamente con decimales, sino tambien con enteros.
+        
+        for (int i = 0; i < length; i++)
+        {
+            switch(rd.nextInt(4))
+            {
+                case 0:{sequence += "A";}break;
+                case 1:{sequence += "C";}break; 
+                case 2:{sequence += "G";}break; 
+                case 3:{sequence += "T";}break; 
+            }
+        }
+        
+        return sequence;  
+    }
+    
+    public int numberReads(String motif) throws FileNotFoundException, IOException
+    {
+            BufferedReader br = new BufferedReader(new FileReader("sequences.umd"));
+            int lines = 0, linesMotif = 0;
+            String read = br.readLine();
+            try
+            { 
+            while(read != null)
+            {
+                if(read.split(",")[2].contains(motif)){
+                    linesMotif +=1 ;
+                    
+                }
+                lines+=1;
+                read = br.readLine();
+                
+            }
+            }
+      catch(Exception ex){}
+            return linesMotif;
+        }
+    public static void generateKmeans(int lenght,String motif) throws IOException
+   {
+     BufferedWriter bw= new BufferedWriter(new OutputStreamWriter(System.out)); 
+     if(lenght==1)
+     {
+       bw.write(motif + "A\n");
+       bw.write(motif + "C\n");
+       bw.write(motif + "G\n");
+       bw.write(motif + "T\n");
+       bw.flush();
+    }
+    else
+    {
+     generateKmeans(lenght -1,motif + "A"); 
+     generateKmeans(lenght -1,motif + "C");   
+     generateKmeans(lenght -1,motif + "G");   
+     generateKmeans(lenght -1,motif + "T");   
+    }
   }
-
-    public String createSecuencia(int length) throws IOException
+    
+    public static void main (String args []) throws IOException
     {
-        int start;
-        String Sequence = "";
-        for(int i=0;i<10;i++)
-        {
-          start=Math.abs(aleatorio.nextInt());
-          length=5 + aleatorio.nextInt(25);
-          Sequence="";
-          for(int j=0;i<length;j++)
-          {
-           switch(aleatorio.nextInt(4))
-           {
-            case 1:
-            Sequence +="A";
-            break;
-            case 2:
-            Sequence +="C";
-            break;
-            case 3:
-            Sequence +="G";
-            break;
-            case 4:
-            Sequence +="T";
-            break;
-           }
-          }
-           
-        }
-        return Sequence;
-    }
-    public int countReads(String motif) throws FileNotFoundException, IOException
-    {
-      BufferedReader br=new BufferedReader(new FileReader("secuencia.umd"));  
-      String read;
-      int lines=0;
-      read=br.readLine();
-      try
-      { 
-       while(read!=null)
-       {
-        if(read.split(",")[2].contains(motif) );
-        {
-         lines +=1;
-        }
-        read=br.readLine();
+        CreateFiles cf = new CreateFiles ();
+        System.out.println(cf.numberReads("CTTA"));
+        
+         BufferedReader br= new BufferedReader(new InputStreamReader(System.in));
+     BufferedWriter bw= new BufferedWriter(new OutputStreamWriter(System.out));
+     String alfabeto= "abcdefghijklmnopqrstuvwxyz";
+     String input =br.readLine();
+     char result='1' ;
+     int max=0;
+     for(int i=0;i<alfabeto.length();i++)
+     {
+      if(countercharacteres(input,alfabeto.charAt(i))>max)
+      {
+       result=alfabeto.charAt(i);
+        max=countercharacteres(input,alfabeto.charAt(i));
        }
       }
-      catch(Exception ex){}
-      return lines;
-    }
-      public static void main(String[] args) throws IOException
-   {
-    Secuenciasumd fc=new Secuenciasumd();
-    System.out.println(fc.countReads("cta"));
+     bw.write("el caracter que mas se repite es" + result + " y aparece " + max  + "veces\n" );
+     bw.flush();
+     generateKmeans(3," ");
+       
    }
+    public static int countercharacteres(String input,char character)
+    {
+        int contador=0;
+        for(int i=0;i<input.length();i++)
+        {
+            contador += input.charAt(i)==character ? 1: 0;
+            
+        }
+        return contador;
+    }
+    
 }
