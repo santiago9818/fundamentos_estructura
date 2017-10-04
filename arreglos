@@ -1,0 +1,28 @@
+# fundaimport java.util.Random;
+
+public class Arreglos
+{
+  public static void main(String[] args) 
+  {
+    //int arreglo[]={1223,32,23,34,4,34,32,34,324,4,4,23,4};
+    int max =Integer.MIN_VALUE,i;
+    int min = Integer.MAX_VALUE;
+    int counter=0;
+     Random rn=new Random ();
+      int arreglo []= new int [100 + rn.nextInt(400)];
+    for( i =0;i<arreglo.length;i++)
+    {
+      arreglo[i]= rn.nextInt();
+    }
+   
+    for( i =0;i<arreglo.length;i++)
+    {
+      min=arreglo[i]<min ? arreglo[i]:min; 
+       max=arreglo[i]>max ? arreglo[i]:max;  
+       counter += arreglo[i];
+    }
+    counter /= arreglo.length; 
+      System.out.println("el minimo es " + min + " y el maximo es " + max + " y el promedio es " + counter);
+  }
+}
+mentos_estructura
