@@ -1,0 +1,29 @@
+# fundamentos_estructura
+public class Insertion_Sort 
+{
+
+    public static void main(String[] args)
+    {
+      int vector[]={ 8,12,7,5,3,10,11};  
+      int j,i,auxiliar,k;
+   for ( i = 0; i < vector.length; i++) 
+   {
+     auxiliar = vector[i];
+     for (j = i - 1; j >=0  ; j--)
+      if(vector[i]>vector[j])
+        break;
+      
+      for( k=i;k> j+1;k--)
+       vector[k]= vector[k-1];
+      
+       vector[j+1]=auxiliar;
+      
+   }
+     
+     for ( i = 0; i < vector.length; i++) 
+     {
+      System.out.print( + vector[i] + " ");
+     }
+ }
+    
+}
